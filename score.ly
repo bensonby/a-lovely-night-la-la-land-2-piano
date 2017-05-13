@@ -12,6 +12,8 @@
   #(set-paper-size "a4")
 }
 
+#(load "swing.scm")
+
 global = {
   \key c \minor
   \time 4/4
@@ -47,7 +49,7 @@ verseSopranoVoice = \lyricmode {
   And though you look so cute
   In your po -- ly -- es -- ter suit
   You're right, I'd ne -- ver fall for you at all
-  
+
   And may -- be this ap -- peals
   To some -- one not in heels
   Or to a -- ny girl who feels
@@ -89,7 +91,7 @@ verseBassVoice = \lyricmode {
   The sun is near -- ly gone
   No lights are turn -- ing on
   A sil -- ver shine that stretch -- es to the sea
-  
+
   We've stum -- bled on a view
   That's tai -- lor -- made for two
   What a shame those two are you and me
@@ -165,6 +167,41 @@ slowVerseLPII = \relative c {
   R1 R1 R1 r4 \clef treble g'16\( d bf g d bf'8.\)\fermata r4
 }
 
+sebRPI = \relative c' {
+  \tripletFeel 8 {
+    r8 <ef af>~ q4 r c8 d~
+    d4 r8 <d f g bf>4 q8~ q4
+    <d g bf>2 r2 r4 } \times 2/3 { c8 e g } \tripletFeel 8 {
+    c8 <bf e,>~ q4
+    r8 <ef, af>~ q4 r \appoggiatura { af16 ef } c8 d~
+    d4 r8 <f af d>4 q8~ q4
+    <ef g ef'>4 r8 ef <bf g'>4 r <d g c>4
+  } \times 2/3 { d8 g c d f g b d g }
+  \tripletFeel 8 {
+    r8 <ef,, g c>~ q2.
+    r8 <d g c>~ q4 bf'8 <d, g bf>~ q4
+    R1
+    r8 f8 } \times 4/5 { c'16 af g f e } \tripletFeel 8 {
+      ef8 c' <c, ef>4
+      <c ef af>2 r8 <c' ef g af> r4
+      r4 \appoggiatura g16 <af, d af'>2 <af d g>4
+      r8 <bf d g>8~ q2.
+      c8 af f'4 r8 <af, c f>~ q4
+      r8 ef' d d c c bf bf a <c g'> e c <e fs b> <d fs b d>4.
+  }
+
+}
+
+sebRPII = \relative c' {
+  <af c ef>1 r4 bf'' c d ef1
+  r4 c d ef f1
+  r4 d ef f g2 d c b
+  <g,, c ef>1 R1 <bf d a'> R1 R1
+  r2 bf''4 b d2 g
+  R1 R1
+  r4 <g,, c e> \tripletFeel 8 { <b b'>8 <d d'>4. }
+}
+
 bassPartI = \relative c, {
   \clef bass
   f4 g af a bf f d bf
@@ -193,6 +230,7 @@ rightPianoI = \relative c'' {
   % Music follows here.
   \introRPI
   \slowVerseRPI
+  \sebRPI
 }
 
 leftPianoI = \relative c' {
@@ -207,6 +245,7 @@ rightPianoII = \relative c'' {
   % Music follows here.
   \introRPII
   \slowVerseRPII
+  \sebRPII
 }
 
 leftPianoII = \relative c' {
