@@ -4,7 +4,7 @@
 \header {
   title = "A Lovely Night"
   subtitle = "From “La La Land”"
-  instrument = "For 2 Voices, 2 Pianos"
+  instrument = "For 2 Voices, 2 Pianos and drums"
   arranger = "Arranged by Benson"
 }
 
@@ -18,16 +18,45 @@ global = {
   \tempo 4=70
 }
 
-sopranoVoice = \relative c'' {
+sopranoVoice = \relative c' {
   \global
   \dynamicUp
   % Music follows here.
   R1 R1 R1 \tempo 4=60 R1 R1 R1 R1 R1 R1 R1
+  \tempo 4=134 \repeat unfold 11 { R1 }
+  r4 c8\pp c r2
+  \repeat unfold 5 { R1 }
+  r2 r4 r8 g\mf \key g \major \tempo 4 = 144
+  g8 b ds e ds4 r8 e a, c ds e ds4 r8 e
+  b ds \times 2/3 { fs e g~} g8 fs a g~ g b4. r4 r8
+  g,8 g b ds e ds4 e8 e a, c ds e ds4 r8 e
+  b4 r16 ds fs e g8 fs a g b2 r4 r8 d,
+  c'8 b c2 e,8 fs~ fs2 r4 r8 d b'4 a b8 d,4 e8~ e4 r fs g
+  c8 b c2 e,8 fs~ fs2 r4 r8 d d4 b' r r8 c, b4 b'2 r4
+  e,4 r8 fs8 g a g fs e4 d r2 r4 e8 fs g a g fs e4 d r2
+  R1 r4 e a r4
+  d,4 c e c8 c b4 a d2
 }
 
 verseSopranoVoice = \lyricmode {
   % Lyrics follow here.
+  Real -- ly?
+  You say there's no -- thing here?
+  Well, let's make some -- thing clear
+  I think I'll be the one to make that call
+  And though you look so cute
+  In your po -- ly -- es -- ter suit
+  You're right, I'd ne -- ver fall for you at all
   
+  And may -- be this ap -- peals
+  To some -- one not in heels
+  Or to a -- ny girl who feels
+  There's some chance for ro -- mance
+  But, I'm frank -- ly fee -- ling no -- thing
+
+  Or it could be less than no -- thing
+  That's right
+  What a waste of a love -- ly night
 }
 
 bassVoice = \relative c' {
@@ -44,7 +73,15 @@ bassVoice = \relative c' {
   c4 f,8 af b8 c16 b~ b4 r
   g16 g g8~ g g ef'16 d8. f16 ef g8~
   g2 r4\fermata
-  c,4
+  c,4 af'8 g af2 c,8 d~ d2 r4 r8 bf g'4 f g8 bf,4 c8~ c2 d4 ef
+  af8 g af2 c,8 d~ d2 r4 r8 bf bf4 g' r2 g,4 g' r2
+  c4 r8 bf c c,4 d8~ d2 r4 r8 a' bf4 a8 bf~ bf4 bf,8 c~ c4 r d ef
+  af8 g af2 c,8 d~ d2 r2 bf4 g'2. af,4 f'8 ef f( ef) d ef~ ef1 R1
+  \key g \major
+  R1 R1 R1 r4 r8 g\pp g g r4 R1 r2 r8 a a r R1 R1 R1
+  r4 \ottava #1 d'\mf^\markup{"whistle"} e fs g2 \ottava #0 r R1
+  \ottava #1 a2. c4 d2 fs4 d d2 r4 d ds2 \ottava #0 r2
+  R1 r2 d,,4 b e, r r2 r2 e'4 b a g c g fs r4 r2 d4 c e c8 c b4 a d2
 }
 
 verseBassVoice = \lyricmode {
@@ -56,6 +93,26 @@ verseBassVoice = \lyricmode {
   We've stum -- bled on a view
   That's tai -- lor -- made for two
   What a shame those two are you and me
+
+  Some o -- ther girl and guy
+  Would love this swirl -- ing sky
+  But there's on -- ly you and I
+  And we've got no shot
+
+  This could ne -- ver be
+  You're not the type for me
+  And there's not a spark in sight
+  What a waste of a love -- ly night
+
+  But you'll call?
+  It's wool
+
+  \repeat unfold 12 { \skip 4 }
+
+  Is that so?
+  Good to know
+  So you a -- gree?
+  What a waste of a love -- ly night
 }
 
 introRPI = \relative c''' {
@@ -108,6 +165,29 @@ slowVerseLPII = \relative c {
   R1 R1 R1 r4 \clef treble g'16\( d bf g d bf'8.\)\fermata r4
 }
 
+bassPartI = \relative c, {
+  \clef bass
+  f4 g af a bf f d bf
+  ef g bf b c g e c
+  f, c' f, af bf f' bf d
+  ef d ef d g, g a b
+  af bf ef, af, bf d f bf
+  g a bf g af bf c af
+  f g af f bf bf, c d
+  ef c' bf af af g f bf,
+  ef bf ef bf' a a, d d
+}
+
+bassPartII = \relative c {
+  \key g \major
+  g4 a b g a e a, a e' e d d g e d b
+  g b d g a e a, a e' e d a' g b a g
+  a b c cs d c b a g d g b, c e g c
+  a e c a d a d fs, g b d g b fs b, ds
+  c e g c, d b' a d, c d e c d b' a d,
+  c e g c d c b a g e c g' d a' d2
+}
+
 rightPianoI = \relative c'' {
   \global
   % Music follows here.
@@ -134,6 +214,8 @@ leftPianoII = \relative c' {
   % Music follows here.
   \introLPII
   \slowVerseLPII
+  \bassPartI
+  \bassPartII
 }
 
 sopranoVoicePart = \new Staff \with {
